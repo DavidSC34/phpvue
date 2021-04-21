@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $extension = '';
     $ruta = '../api/loginRegistro/foto_perfil';
-    $archivo = $_FILES['foto']['temp_name'];
+    $archivo = $_FILES['foto']['tmp_name'];
     $nombrearchivo = $_FILES['foto']['name'];
     $info = pathinfo($nombrearchivo);
     if ($archivo != '') {
@@ -25,6 +25,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         //Guardar una imagen de perfil por defecto
         $ruta = '../api/loginRegistro/foto_perfil/perfil.png';
+    }
+
+    //Encriptacion del password
+
+    $passEncriptada = password_hash($password, PASSWORD_BCRYPT);
+    $ins = $con->query("INSERT INTO usuarios VALUES(DEFAULT,'$usuario','$email','$passEncriptada','$ruta')");
+
+    if($ins){
+            echo "success";
+    }else{
+            echo "fail";
     }
 } else {
     header("location:../../index.php"); //pagina inicio de sesion

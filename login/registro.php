@@ -9,7 +9,7 @@
                         <input type="text" name="usuario" placeholder="Nombre de usuario" required pattern="[A-Za-z]{5,30}">
                         <input type="password" v-model="pass" name="pass" placeholder="Password" required pattern="[A-Za-z0-9]{8,15}">
                         <input type="password" v-model="passC" placeholder="Confirmar Password" required pattern="[A-Za-z0-9]{8,15}">
-                        <input type="email" name="email" placeholder="Correo electronico" required>
+                        <input type="email" v-model="correo" name="email" placeholder="Correo electronico" @blur="validarCorreo" required>
                         <div class="file-field input-field">
                             <div class="btn">
                                 <span>imagen de perfil</span>
@@ -19,7 +19,7 @@
                                 <input class="file-path validate" type="text">
                             </div>
                         </div>
-                        <input type="submit" value="Registrarse" class="btn blue">
+                        <input type="submit" value="Registrarse" :class="boton">
                     </form>
                 </div>
                 <div class="card-action">
@@ -30,5 +30,6 @@
         </div>
     </div>
 </div>
+<h5>RES:{{respuesta}}</h5>
 
 <?php include '../includes/footerLogin.php'; ?>
