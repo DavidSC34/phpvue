@@ -7,8 +7,8 @@
                     <span class="card-title">Registro de usuario</span>
                     <form id="formRegistro" autocomplete="off" @submit.prevent="registro" enctype="multipart/form-data">
                         <input type="text" name="usuario" placeholder="Nombre de usuario" required pattern="[A-Za-z]{5,30}">
-                        <input type="password" name="pass" placeholder="Password" required pattern="[A-Za-z0-9]{8,15}">
-                        <input type="password" placeholder="Confirmar Password" required pattern="[A-Za-z0-9]{8,15}">
+                        <input type="password" v-model="pass" name="pass" placeholder="Password" required pattern="[A-Za-z0-9]{8,15}">
+                        <input type="password" v-model="passC" placeholder="Confirmar Password" required pattern="[A-Za-z0-9]{8,15}">
                         <input type="email" name="email" placeholder="Correo electronico" required>
                         <div class="file-field input-field">
                             <div class="btn">
