@@ -1,4 +1,11 @@
-<?php include '../includes/header.php'; ?>
+<?php
+@session_start();
+
+if (isset($_SESSION['user'])) {
+    header("Location:../principal");
+}
+
+include '../includes/header.php'; ?>
 <div class="container center">
     <div class="row" style="margin:0,auto;width:50%;">
         <div class="col s12 m12 l12">

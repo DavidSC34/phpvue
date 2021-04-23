@@ -14,4 +14,9 @@
 <body>
     <main id="app">
         <nav class="blue">
+            <div class="nav-wrapper" v-if="menu ==true">
+                <ul id="nav-movile" class="right hide-on-med-and-down">
+                    <li><a href="../login/salir.php">SALIR</a></li>
+                </ul>
+            </div>
         </nav>
