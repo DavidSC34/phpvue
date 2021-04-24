@@ -16,6 +16,8 @@
         <nav class="blue">
             <div class="nav-wrapper" v-if="menu ==true">
                 <ul id="nav-movile" class="right hide-on-med-and-down">
+                    <li><a href="index.php">HOME</a></li>
+                    <li><a href="alta.php"><i class="material-icons">add</i></a></li>
                     <li><a href="../login/salir.php">SALIR</a></li>
                 </ul>
             </div>
