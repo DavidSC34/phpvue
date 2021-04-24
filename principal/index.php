@@ -1,4 +1,14 @@
-<?php include '../includes/header.php'; ?>
+<?php
+@session_start();
+
+if (!isset($_SESSION['user'])) {
+    // header("Location:../principal");
+    header("location:http://localhost/phpvue/login/index.php");
+    exit();
+}
+
+include '../includes/header.php';
+?>
 <nav>
     <div class="nav-wrapper indigo lighten-5">
         <form>
@@ -11,6 +21,7 @@
     </div>
 </nav>
 <div class="container">
+    {{userPost}}
     <div class="row" v-for="item in datosFiltrados">
         <div class="col s12 m12 l12">
             <div class="card">
@@ -23,8 +34,8 @@
                     <p>{{item.descripcion}}</p>
                 </div>
                 <div class="card-action">
-                    <a :href="'./editar.php?id=' + item.id ">EDITAR</a>
-                    <a href="#" @click="eliminar(item.id)">ELIMINAR</a>
+                    <a v-if="item.user == userPost" :href="'./editar.php?id=' + item.id ">EDITAR</a>
+                    <a v-if="item.user == userPost" href="#" @click="eliminar(item.id)">ELIMINAR</a>
                     <a href="#" class="copiar" :data-clipboard-target="'#copy' + item.id">COPIAR</a>
                 </div>
             </div>

@@ -6,7 +6,9 @@ const app = new Vue({
         listar: [],
         buscar: '',
         itemId: '',
-        formEditar: {}
+        formEditar: {},
+        userPost: '',
+        session: ''
     },
     created() {
         axios.get('http://localhost/phpvue/api/crud/getPost.php')
@@ -14,6 +16,7 @@ const app = new Vue({
                 this.listar = resp.data;
                 // console.log(listar);
             });
+        this.getUser();
         this.getId(); //busca si hay parametros
     },
     computed: {
@@ -102,6 +105,12 @@ const app = new Vue({
                     }
                 });
 
+        },
+        getUser() {
+            axios.get('http://localhost/phpvue/api/crud/getUser.php')
+                .then(resp => {
+                    this.userPost = resp.data;
+                });
         }
     }
 });

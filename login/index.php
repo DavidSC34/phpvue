@@ -2,7 +2,9 @@
 @session_start();
 
 if (isset($_SESSION['user'])) {
-    header("Location:../principal");
+    // header("Location:../principal");
+    header("Location:http://localhost/phpvue/principal/index.php");
+    exit();
 }
 
 include '../includes/header.php'; ?>

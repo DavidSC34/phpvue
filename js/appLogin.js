@@ -57,7 +57,7 @@ const app = new Vue({
                 .then(resp => {
                     this.respuesta = resp.data;
                     if (resp.data == 'success') {
-                        location.href = '../principal';
+                        location.href = 'http://localhost/phpvue/principal/index.php';
                     } else {
                         swal('Ususrio y/o contraseña incorrecta');
                     }

@@ -18,6 +18,7 @@ $passEncriptada = password_verify($pass, $password);
 if ($email == $correo && $passEncriptada) {
     $_SESSION['user'] = $user;
     $_SESSION['foto'] = $foto;
+
     echo "success";
 } else {
     echo  "fail";
