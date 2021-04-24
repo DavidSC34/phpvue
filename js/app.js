@@ -11,11 +11,7 @@ const app = new Vue({
         session: ''
     },
     created() {
-        axios.get('http://localhost/phpvue/api/crud/getPost.php')
-            .then(resp => {
-                this.listar = resp.data;
-                // console.log(listar);
-            });
+        this.getCategoria();
         this.getUser();
         this.getId(); //busca si hay parametros
     },
@@ -95,7 +91,7 @@ const app = new Vue({
                             .then(resp => {
                                 if (resp.data == 'success') {
                                     swal('Post eliminado');
-                                    //this.getCategoria()
+                                    this.getCategoria();
                                 } else {
                                     swal('Post no eliminado');
                                 }
@@ -111,6 +107,33 @@ const app = new Vue({
                 .then(resp => {
                     this.userPost = resp.data;
                 });
+        },
+        getCategoria() {
+            let uri = window.location.href.split('?');
+            if (uri.length == 2) {
+                let vars = uri[1].split('&'); //si viene mas de un parametro
+                let getVars = {};
+                let tmp = '';
+                vars.forEach(function name(v) {
+                    tmp = v.split('=');
+                    if (tmp.length == 2) {
+                        getVars[tmp[0]] = tmp[1];
+                    }
+                });
+                this.itemId = getVars;
+                // console.log(this.itemId.id);
+                axios.get('http://localhost/phpvue/api/crud/getCategoria.php?cat=' + this.itemId.cat)
+                    .then(resp => {
+                        this.listar = resp.data;
+                    });
+            } else {
+
+                axios.get('http://localhost/phpvue/api/crud/getPost.php')
+                    .then(resp => {
+                        this.listar = resp.data;
+                        // console.log(listar);
+                    });
+            }
         }
     }
 });

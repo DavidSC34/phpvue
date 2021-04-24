@@ -1,4 +1,6 @@
 <?php
+
+include '../includes/sesion.php';
 include '../includes/header.php';
 ?>
 <div class="container center">

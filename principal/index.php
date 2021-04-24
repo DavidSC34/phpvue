@@ -1,12 +1,6 @@
 <?php
-@session_start();
 
-if (!isset($_SESSION['user'])) {
-    // header("Location:../principal");
-    header("location:http://localhost/phpvue/login/index.php");
-    exit();
-}
-
+include '../includes/sesion.php';
 include '../includes/header.php';
 ?>
 <nav>
@@ -21,7 +15,7 @@ include '../includes/header.php';
     </div>
 </nav>
 <div class="container">
-    {{userPost}}
+
     <div class="row" v-for="item in datosFiltrados">
         <div class="col s12 m12 l12">
             <div class="card">
